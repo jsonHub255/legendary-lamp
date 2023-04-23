@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>Order Form</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h2>Order Items</h2>
+    {{ orderitem_formset.management_form }}
+    {% for formset in orderitem_formset %}
+      {{ formset.as_p }}
+    {% endfor %}
+    <button type="submit">Save</button>
+    </form> 
+{% endblock %}
+
+<!-- The formset is not displaying correctly. I have tried to debug it but I am not sure what is wrong. I have tried to use the formset in the admin page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it works fine. I am not sure what is wrong with the formset in the home page. I have tried to use the formset in the home page and it -->

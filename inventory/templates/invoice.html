@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Invoice{% endblock %}
+
+{% block content %}
+    <h1>Invoice</h1>
+    <p>Invoice details go here</p>
+    <a href="{% url 'invoice_generate' order_id=order.id %}" class="btn btn-primary">Generate Invoice</a>
+
+{% endblock %}

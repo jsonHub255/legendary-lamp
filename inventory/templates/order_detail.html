@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Details{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <h1 class="text-center mb-4">Order Details</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-bordered mb-4">
+        <tr>
+          <th>Order Number:</th>
+          <td>{{ order.order_number }}</td>
+        </tr>
+        <tr>
+          <th>Order Date:</th>
+          <td>{{ order.date_ordered|date:"d/m/Y" }}</td>
+        </tr>
+        <tr>
+          <th>Supplier:</th>
+          <td>{{ order.supplier }}</td>
+        </tr>
+        <tr>
+          <th>Total Price:</th>
+          <td>{{ order.total_price }} DH</td>
+        </tr>
+        <tr>
+          <th>Driver:</th>
+          <td>{{ order.driver }}</td>
+        </tr>
+        <tr>
+          <th>Destination:</th>
+          <td>{{ order.destination }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-bordered mb-4">
+        <thead>
+          <tr>
+            <th>Order Items:</th>
+            <th>Quantity:</th>
+            <th>Unit Price:</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if order.orderitem_set.all %}
+            {% for item in order.orderitem_set.all %}
+              <tr>
+                <td>{{ item }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.product.unit_price }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="3" class="text-muted">No items found.</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <a class="btn btn-primary" href="{% url 'order-list' %}">Back to Order List</a>
+</div>
+{% endblock %}

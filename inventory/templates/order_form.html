@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Update{% else %}Create{% endif %} Order</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h2>Order Items</h2>
+    {{ orderitem_formset.management_form }}
+    {% for formset in orderitem_formset %}
+      {{ formset.as_p }}
+    {% endfor %}
+    <button type="submit">Save</button>
+    </form> 
+{% endblock %}
+

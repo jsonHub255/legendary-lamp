@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+    <h1>Orders</h1>
+    <a href="{% url 'order-create' %}" class="btn btn-primary mb-3">Create Order</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Supplier Name</th>
+                <th>Delivery Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in object_list %}
+                <tr>
+                    <td>{{ order.order_number }}</td>
+                    <td>{{ order.supplier.name }}</td>
+                    <td>{{ order.date_delivered|date:"d/m/Y" }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                        <a href="{% url 'order-detail' order.id %}" class="btn btn-sm btn-info">View</a>
+                        <a href="{% url 'order-update' order.id %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'order-delete' order.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No orders found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
